@@ -1,15 +1,14 @@
-import { IsString, IsOptional } from 'class-validator';
+import { IsArray, IsNotEmpty, IsString } from "class-validator";
 
 export class UpdatePostDto {
   @IsString()
-  @IsOptional()
+  @IsNotEmpty()
+  title?: string;
+
+  @IsString()
+  @IsNotEmpty()
   content?: string;
 
-  @IsString()
-  @IsOptional()
-  image?: string;
-
-  @IsString()
-  @IsOptional()
-  category?: string;
+  @IsArray()
+  categories?: string[];
 }

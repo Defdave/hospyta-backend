@@ -1,16 +1,17 @@
-// src/comments/dto/create-comment.dto.ts
-import { IsNotEmpty, IsString, IsMongoId } from 'class-validator';
+import { IsString } from 'class-validator';
 
 export class CreateCommentDto {
-  @IsNotEmpty()
-  @IsMongoId()
-  postId: string;
+  @IsString()
+  author: string;
 
-  @IsNotEmpty()
   @IsString()
   content: string;
 
-  @IsNotEmpty()
-  @IsMongoId()
-  author: string;
+  @IsString()
+  postId: string;
+}
+
+export class UpdateCommentDto {
+  @IsString()
+  content: string;
 }

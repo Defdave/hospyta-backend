@@ -1,53 +1,44 @@
-import { Controller, Get, Post, Body, Param, Put, Delete, UseGuards, Req } from '@nestjs/common';
+import { Controller, Get, Post, Body, Param, Put, Delete, HttpException, HttpStatus, Patch } from '@nestjs/common';
 import { PostsService } from './posts.service';
 import { CreatePostDto } from './dto/create-post.dto';
 import { UpdatePostDto } from './dto/update-post.dto';
-import { Request } from 'express';
-import { JwtAuthGuard } from 'src/auth/guards/jwt-auth.guard';
 
 @Controller('posts')
 export class PostsController {
-  constructor(private readonly postsService: PostsService) {}
+  constructor(private readonly postService: PostsService) {}
 
-  // @UseGuards(JwtAuthGuard)y
   @Post()
   async create(@Body() createPostDto: CreatePostDto) {
-    return this.postsService.create(createPostDto);
-  }
-
-  // @UseGuards(JwtAuthGuard)
-  @Put(':postId')
-  async update(@Param('postId') postId: string, @Body() updatePostDto: UpdatePostDto) {
-    return this.postsService.update(postId, updatePostDto);
-  }
-
-  // @UseGuards(JwtAuthGuard)
-  @Delete(':postId')
-  async delete(@Param('postId') postId: string) {
-    return this.postsService.delete(postId);
+    return this.postService.create(createPostDto);
   }
 
   @Get()
   async findAll() {
-    return this.postsService.findAll();
+    return this.postService.findAll();
   }
 
-  @Get(':postId')
-  async findById(@Param('postId') postId: string) {
-    return this.postsService.findById(postId);
+  @Get(':id')
+  async findOne(@Param('id') id: string) {
+    return this.postService.findOne(id);
   }
 
-  // @UseGuards(JwtAuthGuard)
-  @Post(':postId/upvote')
-  async upvote(@Param('postId') postId: string, @Req() req: Request) {
-    // const userId = req.user.userId;  // Extract the user ID from the JWT token
-    return this.postsService.upvote(postId);
+  @Put(':id')
+  async update(@Param('id') id: string, @Body() updatePostDto: UpdatePostDto) {
+    return this.postService.update(id, updatePostDto);
   }
 
-  // @UseGuards(JwtAuthGuard)
-  @Post(':postId/downvote')
-  async downvote(@Param('postId') postId: string, @Req() req: Request) {
-    // const userId = req.user.userId;  // Extract the user ID from the JWT token
-    return this.postsService.downvote(postId);
+  @Delete(':id')
+  async delete(@Param('id') id: string) {
+    return this.postService.delete(id);
+  }
+
+  @Patch(':id/upvote')
+  async upvote(@Param('id') id: string) {
+    return this.postService.upvote(id);
+  }
+
+  @Patch(':id/downvote')
+  async downvote(@Param('id') id: string) {
+    return this.postService.downvote(id);
   }
 }

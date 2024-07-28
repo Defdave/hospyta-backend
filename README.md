@@ -8,12 +8,7 @@ This project is a backend API built with NestJS and TypeScript for a cross-platf
 - [Installation](#installation)
 - [Usage](#usage)
 - [API Endpoints](#api-endpoints)
-- [Database Schema](#database-schema)
-- [Authentication](#authentication)
-- [Error Handling](#error-handling)
-- [Performance Optimization](#performance-optimization)
-- [Contributing](#contributing)
-- [License](#license)
+- [Problem faced](#problem-faced)
 
 ## Features
 
@@ -59,8 +54,8 @@ This project is a backend API built with NestJS and TypeScript for a cross-platf
   POST /auth/register
 
 2. **Login a user**
-```bash
-POST /auth/login
+  ```bash
+  POST /auth/login
 
 3. **Create a new post**
 ```bash
@@ -74,10 +69,9 @@ GET /posts
 ```bash
 POST /posts/:postId/upvote
 
-
 - swagger docs link: http://localhost:3000/api
 
-# problem faced
+# Problem Faced
 - I faced an authentication problem and it have not be resloved yet
 
 # Summary about myself

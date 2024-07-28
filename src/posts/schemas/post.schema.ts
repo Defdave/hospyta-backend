@@ -1,34 +1,47 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { Document, Schema as MongooseSchema } from 'mongoose';
+import { Document } from 'mongoose';
+import * as mongoose from 'mongoose';
 
-@Schema()
-export class Post extends Document {
-  @Prop()
+export type PostDocument = Post & Document;
+
+@Schema({ timestamps: true })
+export class Post {
+  @Prop({ required: true })
   title: string;
 
-  @Prop()
+  @Prop({ required: true })
   content: string;
 
-  @Prop()
-  image: string;
+  @Prop({ required: true })
+  author: string;
 
-  @Prop()
-  category: string;
+  @Prop({ default: 0 })
+  upvotes: number;
 
-  @Prop({ default: Date.now })
-  createdAt: Date;
+  @Prop({ default: 0 })
+  downvotes: number;
 
-  // @Prop()
-  // userId: string;
+  @Prop({ type: [String], required: true })
+  categories: string[];
 
-  @Prop({ type: [{ type: MongooseSchema.Types.ObjectId, ref: 'Comment' }] })
+  @Prop({ type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Comment' }] })
   comments: Comment[];
-
-  @Prop({ default: [] })
-  upvotedBy: string[];
-
-  @Prop({ default: [] })
-  downvotedBy: string[];
 }
 
 export const PostSchema = SchemaFactory.createForClass(Post);
+
+export type CommentDocument = Comment & Document;
+
+@Schema({ timestamps: true })
+export class Comment {
+  @Prop({ required: true })
+  content: string;
+
+  @Prop({ required: true })
+  author: string;
+
+  @Prop({ type: mongoose.Schema.Types.ObjectId, ref: 'Post' })
+  post: Post;
+}
+
+export const CommentSchema = SchemaFactory.createForClass(Comment);

@@ -1,10 +1,8 @@
-// src/comments/comments.service.ts
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
-import { Model, Types } from 'mongoose';
+import { Model } from 'mongoose';
 import { Comment, CommentDocument } from './schemas/comment.schema';
-import { CreateCommentDto } from './dto/create-comment.dto';
-import { ReplyCommentDto } from './dto/reply-comment.dto';
+import { CreateCommentDto, UpdateCommentDto } from './dto/create-comment.dto';
 
 @Injectable()
 export class CommentsService {
@@ -15,19 +13,27 @@ export class CommentsService {
     return createdComment.save();
   }
 
-  async findByPostId(postId: Types.ObjectId): Promise<Comment[]> {
-    return this.commentModel.find({ postId });
+  async findAll(): Promise<Comment[]> {
+    return this.commentModel.find();
   }
 
-  async replyToComment(replyCommentDto: ReplyCommentDto): Promise<Comment> {
-    const { commentId, content, author } = replyCommentDto;
-    const parentComment = await this.commentModel.findById(commentId).exec();
-    if (!parentComment) {
-      throw new Error('Comment not found');
+  async findByPostId(postId: string): Promise<Comment[]> {
+    return this.commentModel.find({ postId }).exec();
+  }
+
+  async update(id: string, updateCommentDto: UpdateCommentDto): Promise<Comment> {
+    const updatedComment = await this.commentModel.findByIdAndUpdate(id, updateCommentDto, { new: true }).exec();
+    if (!updatedComment) {
+      throw new NotFoundException(`Comment with ID ${id} not found`);
     }
-    const newComment: any = new this.commentModel({ content, author, postId: parentComment.postId });
-    parentComment.replies.push(newComment._id);
-    await parentComment.save();
-    return newComment.save();
+    return updatedComment;
+  }
+
+  async delete(id: string): Promise<Comment> {
+    const deletedComment = await this.commentModel.findByIdAndDelete(id).exec();
+    if (!deletedComment) {
+      throw new NotFoundException(`Comment with ID ${id} not found`);
+    }
+    return deletedComment;
   }
 }
