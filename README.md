@@ -1,73 +1,86 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
+# Backend API for Cross-Platform Mobile Application
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+This project is a backend API built with NestJS and TypeScript for a cross-platform mobile application. It handles user authentication, post creation, voting, commenting, and various other functionalities. MongoDB is used as the database, and Swagger is integrated for API documentation.
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+## Table of Contents
 
-## Description
+- [Features](#features)
+- [Installation](#installation)
+- [Usage](#usage)
+- [API Endpoints](#api-endpoints)
+- [Database Schema](#database-schema)
+- [Authentication](#authentication)
+- [Error Handling](#error-handling)
+- [Performance Optimization](#performance-optimization)
+- [Contributing](#contributing)
+- [License](#license)
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+## Features
+
+- User registration and login
+- JWT-based authentication
+- Create, update, delete, and retrieve posts
+- Upvote and downvote posts
+- Add and reply to comments
+- Sort and filter posts
+- Swagger API documentation
 
 ## Installation
 
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/yourusername/your-repo.git
+   cd your-repo
+
+2. **npm install**
+   ```bash
+   npm install
+
+2. **npm install**
+   ```bash
+   npm install
+
+3. **npm install**
+   ```bash
+   Set up environment variables:
+
+4. **npm install**
+   ```bash
+   MONGO_URI=mongodb://localhost:27017/your-database
+   JWT_SECRET=your_jwt_secret
+
+
+## Usage
+
+# API Endpoints
+
+1. **Register a new user**
 ```bash
-$ npm install
-```
+  POST /auth/register
 
-## Running the app
-
+2. **Login a user**
 ```bash
-# development
-$ npm run start
+POST /auth/login
 
-# watch mode
-$ npm run start:dev
-
-# production mode
-$ npm run start:prod
-```
-
-## Test
-
+3. **Create a new post**
 ```bash
-# unit tests
-$ npm run test
+POST /posts
 
-# e2e tests
-$ npm run test:e2e
+4. **Get all posts**
+``bash
+GET /posts
 
-# test coverage
-$ npm run test:cov
-```
+5. **Upvote a post**
+```bash
+POST /posts/:postId/upvote
 
-## Support
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+- swagger docs link: http://localhost:3000/api
 
-## Stay in touch
+# problem faced
+- I faced an authentication problem and it have not be resloved yet
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+# Summary about myself
+- I'm a self taught software dev. I have been seeking for an intern or junior role where I can learn from inspiring devs, and gain actual work experience and i just started learning nodejs/nestjs cause of this intern i have experience with nodejs/expressjs so this task might not have be well done, unconventional as it may seem, can I get such an opportunity? I promise you would smile back at this decision because I'm a hard worker and I learn really fast.
 
-## License
 
-Nest is [MIT licensed](LICENSE).
