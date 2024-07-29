@@ -43,6 +43,6 @@ This project is a backend API built with NestJS and TypeScript for a cross-platf
    JWT_SECRET=your_jwt_secret
 
 # Summary about myself
-- I'm a self taught software dev. I have been seeking for an intern or junior role where I can learn from inspiring devs, and gain actual work experience and i just started learning nodejs/nestjs cause of this intern i have experience with nodejs/expressjs so this task might not have be well done, unconventional as it may seem, can I get such an opportunity? I promise you would smile back at this decision because I'm a hard worker and I learn really fast.
+- I'm a self taught software dev. I have been seeking for an intern or junior role where I can learn from inspiring devs, and gain actual work experience and i just started learning nodejs/nestjs cause of this intern i have experience with nodejs/expressjs cause it nodejs/exprsssjs i use mostly in the past, so this task might not have be well done, unconventional as it may seem, can I get such an opportunity? I promise you would smile back at this decision because I'm a hard worker and I learn really fast.
 
 
