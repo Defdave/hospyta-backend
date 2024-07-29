@@ -26,12 +26,18 @@ export class PostsService {
     return post;
   }
 
-  async update(id: string, updatePostDto: UpdatePostDto): Promise<Post> {
-    const updatedPost = await this.postModel.findByIdAndUpdate(id, updatePostDto, { new: true }).exec();
-    if (!updatedPost) {
-      throw new NotFoundException(`Post with ID ${id} not found`);
+  async updatePost(id: string, updatePostDto: UpdatePostDto): Promise<any> {
+    const existingPost = await this.postModel.findByIdAndUpdate(
+      id,
+      updatePostDto,
+      { new: true }
+    );
+
+    if (!existingPost) {
+      throw new NotFoundException(`Post with ID "${id}" not found`);
     }
-    return updatedPost;
+
+    return existingPost;
   }
 
   async delete(id: string): Promise<Post> {

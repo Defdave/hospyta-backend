@@ -8,7 +8,10 @@ export type UserDocument = User & Document;
 @Schema()
 export class User {
   @Prop({ required: true })
-  username: string;
+  firstname: string;
+
+  @Prop({ required: true })
+  lastname: string;
 
   @Prop({ required: true, unique: true })
   email: string;
@@ -17,7 +20,7 @@ export class User {
   password: string;
 
   @Prop()
-  profilePicture: string;
+  profileImage: string;
 
   async validatePassword(password: string): Promise<boolean> {
     return bcrypt.compare(password, this.password);
