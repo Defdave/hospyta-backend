@@ -22,25 +22,16 @@ This project is a backend API built with NestJS and TypeScript for a cross-platf
 
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/yourusername/your-repo.git
+   git clone https://github.com/Defdave/hospyta-backend.git
    cd your-repo
 
 2. **npm install**
    ```bash
    npm install
 
-2. **npm install**
-   ```bash
-   npm install
-
-3. **npm install**
-   ```bash
-   Set up environment variables:
-
-4. **npm install**
+3. **add your mongo_url**
    ```bash
    MONGO_URI=mongodb://localhost:27017/your-database
-   JWT_SECRET=your_jwt_secret
 
 # Summary about myself
 - I'm a self taught software dev. I have been seeking for an intern or junior role where I can learn from inspiring devs, and gain actual work experience and i just started learning nodejs/nestjs cause of this intern i have experience with nodejs/expressjs cause it nodejs/exprsssjs i use mostly in the past, so this task might not have be well done, unconventional as it may seem, can I get such an opportunity? I promise you would smile back at this decision because I'm a hard worker and I learn really fast.
